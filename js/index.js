@@ -31,7 +31,7 @@ $(function () {
                             }else if(o.state=="3"){ // 不参加
                                 str+="       <span class=\"messReply yue\">"+o.hzzt+"</span>\n";
                             };
-                            str+=" <time>会议开始时间：" + o.hydate + "</time>" +
+                            str+=" <time>" + o.kssj + "</time>" +
                                 "       </div>\n" +
                                 "      </li>"
                             lis.push(str);

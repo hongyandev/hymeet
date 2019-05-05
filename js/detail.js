@@ -15,7 +15,8 @@ $(function () {
             success: function (res) {
                 if(res.code=='200'){
                     $(".mDetailTop h1").html(res.data.hytitle);
-                    $(".mDetailTime").html(res.data.hydate);
+                    $(".kssj").html("开始 " + res.data.kssj);
+                    $(".jssj").html("结束 " + res.data.jssj);
                     $(".mZj .zjr").html(res.data.zjr);
                     $(".address").html(res.data.hyaddr);
                     var str='';
