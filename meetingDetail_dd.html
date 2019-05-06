@@ -8,9 +8,10 @@
     <title>会议信息</title>
     <link rel="stylesheet" href="layui/css/style.css" media="all">
     <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <script src="https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config"></script>
+    <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="js/detail.js?v=1" charset="UTF-8"></script>
 </head>
 <body>
     <div class="mDetail">
@@ -60,9 +61,25 @@
     </div>
     <nav class="layui-container">
         <ul class="layui-row">
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="hzBtn" href="javascript:void(0)">回执</a></li>
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="detailBtn" href="javascript:void(0)">详情</a></li>
+            <li class="layui-col-xs4 align-center layui-col-sm4 layui-col-md4"><a class="hzBtn" href="javascript:void(0)">回执</a></li>
+            <li class="layui-col-xs4 align-center layui-col-sm4 layui-col-md4"><a class="signinBtn" href="javascript:void(0)">签到</a></li>
+            <li class="layui-col-xs4 align-center layui-col-sm4 layui-col-md4"><a class="detailBtn" href="javascript:void(0)">详情</a></li>
         </ul>
     </nav>
 </body>
+<script>
+    dd.config({
+        agentId: _config.agentId,
+        corpId: _config.corpId,
+        timeStamp: _config.timeStamp,
+        nonceStr: _config.nonceStr,
+        signature: _config.signature,
+        jsApiList: ['runtime.info', 'device.notification.confirm', 'device.notification.alert',
+            'device.notification.prompt', 'biz.util.openLink', 'biz.util.scan']
+    });
+    dd.error(function (err) {
+        alert('dd error: ' + JSON.stringify(err));
+    });
+</script>
+<script type="text/javascript" src="js/detail.js?v=1" charset="UTF-8"></script>
 </html>

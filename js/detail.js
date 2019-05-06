@@ -7,7 +7,7 @@ $(function () {
         var layer = layui.layer;
         $.ajax({
             type: "post",
-            url: "http://sge.cn:9106/api/meeting/info",
+            url: "https://wx.hongyancloud.com/api/meeting/info",
             data: {
                 hyid: hyid,
                 ygbm: ygbm
@@ -57,13 +57,25 @@ $(function () {
                         });
 
                     });
-
                     $(".detailBtn").on("click",function () {
                         document.location.href = "meetingMx.html"
                     })
-
+                    $(".signinBtn").click(function () {
+                        if (dd) {
+                            dd.ready(function () {
+                                dd.biz.util.scan({
+                                    onSuccess: function(data) {
+                                        alert(data.text);
+                                    },
+                                    onFail : function(err) {
+                                    }
+                                });
+                            });
+                        } else {
+                            alert("call camera");
+                        }
+                    })
                 }
-
             }
         });
     })
@@ -73,7 +85,7 @@ function hz(state) {
     var message = $("#desc").val();
     $.ajax({
         type: "post",
-        url: "http://sge.cn:9106/api/meeting/reply",
+        url: "https://wx.hongyancloud.com/api/meeting/reply",
         data: {
             hzid: hzid,
             message: message,
