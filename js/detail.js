@@ -19,6 +19,7 @@ $(function () {
                     $(".jssj").html("结束 " + res.data.jssj);
                     $(".mZj .zjr").html(res.data.zjr);
                     $(".address").html(res.data.hyaddr);
+                    $(".hymc").html(res.data.hymc);
                     var str='';
                     for(var i=0;i<res.data.attendee.length;i++){
                         if(res.data.attendee[i].hzzt=='0'||res.data.attendee[i].hzzt=='1'){
