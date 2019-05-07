@@ -90,8 +90,19 @@
             dd.error(function (err) {
                 alert('dd error: ' + JSON.stringify(err));
             });
+            dd.ready(function () {
+                $(".signinBtn").off('click').click(function () {
+                    dd.biz.util.scan({
+                        onSuccess: function(data) {
+                            alert(data.text);
+                        },
+                        onFail : function(err) {
+                        }
+                    });
+                });
+            });
         })
     });
 </script>
-<script type="text/javascript" src="js/detail.js?v=1" charset="UTF-8"></script>
+<script type="text/javascript" src="js/detail.js?v=2" charset="UTF-8"></script>
 </html>

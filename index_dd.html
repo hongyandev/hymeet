@@ -16,6 +16,7 @@
     <ul id="messLists" class="messLists">
     </ul>
 </div>
+<script src="js/index.js?v=14"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
@@ -31,9 +32,31 @@
             dd.error(function (err) {
                 alert('dd error: ' + JSON.stringify(err));
             });
+            dd.ready(function () {
+                dd.runtime.permission.requestAuthCode({
+                    corpId: _config.corpId,
+                    onSuccess: function (info) {
+                        $.ajax({
+                            url: 'https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/userinfo?code=' + info.code + '&corpid=' + _config.corpId,
+                            type: 'GET',
+                            async: false,
+                            success: function (res) {
+                                _userinfo = res.data;
+                                ygbm = _userinfo.jobnumber;
+                                loadFlow(ygbm);
+                            },
+                            error: function () {
+                                alert("userinfo: " + _config.corpId);
+                            }
+                        });
+                    },
+                    onFail: function (err) {
+                        alert('requestAuthCode: ' + JSON.stringify(err));
+                    }
+                });
+            });
         })
     });
 </script>
-<script src="js/index.js?v=13"></script>
 </body>
 </html>

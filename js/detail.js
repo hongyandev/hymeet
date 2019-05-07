@@ -60,21 +60,9 @@ $(function () {
                     });
                     $(".detailBtn").on("click",function () {
                         document.location.href = "meetingMx.html"
-                    })
+                    });
                     $(".signinBtn").click(function () {
-                        if (dd) {
-                            dd.ready(function () {
-                                dd.biz.util.scan({
-                                    onSuccess: function(data) {
-                                        alert(data.text);
-                                    },
-                                    onFail : function(err) {
-                                    }
-                                });
-                            });
-                        } else {
-                            alert("call camera");
-                        }
+                        alert("call camera");
                     })
                 }
             }
