@@ -1,6 +1,7 @@
 var paramsObj=getRequestParams();
 var ygbm = paramsObj.ygbm || "";
 var hyid = paramsObj.hyid || "";
+var signin;
 var meetingSignin = function(token){
     $.ajax({
         type: "post",
@@ -13,6 +14,7 @@ var meetingSignin = function(token){
         success: function (res) {
             if(res.code == 200) {
                 layer.msg('签到成功');
+                $(".signinBtn").html('已签到').off('click');
             } else {
                 layer.alert(res.message, {icon: 2, btnAlign: 'c', closeBtn: 0});
             }
@@ -35,6 +37,7 @@ $(function () {
             },
             success: function (res) {
                 if(res.code=='200'){
+                    signin = res.data.signin;
                     $(".mDetailTop h1").html(res.data.hytitle);
                     $(".kssj").html("开始 " + res.data.kssj);
                     $(".jssj").html("结束 " + res.data.jssj);
@@ -82,9 +85,13 @@ $(function () {
                     $(".detailBtn").on("click",function () {
                         document.location.href = "meetingMx.html"
                     });
-                    $(".signinBtn").click(function () {
-                        alert("call camera");
-                    })
+                    if (signin) {
+                        $(".signinBtn").html('已签到').off('click');
+                    } else {
+                        $(".signinBtn").click(function () {
+                            alert("call camera");
+                        })
+                    }
                 }
             }
         });

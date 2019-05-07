@@ -75,7 +75,7 @@
     </nav>
 </body>
 <script src="js/common.js?v=1"></script>
-<script type="text/javascript" src="js/detail.js?v=3" charset="UTF-8"></script>
+<script type="text/javascript" src="js/detail.js?v=4" charset="UTF-8"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
@@ -92,15 +92,17 @@
                 alert('dd error: ' + JSON.stringify(err));
             });
             dd.ready(function () {
-                $(".signinBtn").off('click').click(function () {
-                    dd.biz.util.scan({
-                        onSuccess: function(data) {
-                            meetingSignin(data.text);
-                        },
-                        onFail : function(err) {
-                        }
+                if(!signin) {
+                    $(".signinBtn").off('click').click(function () {
+                        dd.biz.util.scan({
+                            onSuccess: function(data) {
+                                meetingSignin(data.text);
+                            },
+                            onFail : function(err) {
+                            }
+                        });
                     });
-                });
+                }
             });
         })
     });
