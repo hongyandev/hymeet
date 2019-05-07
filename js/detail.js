@@ -88,9 +88,11 @@ $(function () {
                     if (signin) {
                         $(".signinBtn").html('已签到').off('click');
                     } else {
-                        $(".signinBtn").click(function () {
-                            alert("call camera");
-                        })
+                        if(!dd) {
+                            $(".signinBtn").click(function () {
+                                alert("call camera");
+                            })
+                        }
                     }
                 }
             }

@@ -93,7 +93,7 @@
             });
             dd.ready(function () {
                 if(!signin) {
-                    $(".signinBtn").off('click').click(function () {
+                    $(".signinBtn").click(function () {
                         dd.biz.util.scan({
                             onSuccess: function(data) {
                                 meetingSignin(data.text);
