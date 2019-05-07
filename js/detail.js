@@ -1,7 +1,28 @@
+var paramsObj=getRequestParams();
+var ygbm = paramsObj.ygbm || "";
+var hyid = paramsObj.hyid || "";
+var meetingSignin = function(token){
+    $.ajax({
+        type: "post",
+        url: "https://wx.hongyancloud.com/api/meeting/signin",
+        data: {
+            token: token,
+            ygbm: ygbm,
+            hyid: hyid
+        },
+        success: function (res) {
+            if(res.code == 200) {
+                layer.msg('签到成功');
+            } else {
+                layer.alert(res.message, {icon: 2, btnAlign: 'c', closeBtn: 0});
+            }
+        },
+        error: function (request, error) {
+            layer.alert(error, {icon: 2, btnAlign: 'c', closeBtn: 0});
+        }
+    })
+}
 $(function () {
-    var paramsObj=GetRequest();
-    var ygbm = paramsObj.ygbm;
-    var hyid = paramsObj.hyid;
     layui.use('layer', function() {
         // var $ = layui.jquery;
         var layer = layui.layer;
@@ -92,16 +113,4 @@ function hz(state) {
             }
         }
     })
-}
-function GetRequest() {
-    var url = location.search; //获取url中"?"符后的字串
-    var theRequest = new Object();
-    if(url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        strs = str.split("&");
-        for(var i = 0; i < strs.length; i++) {
-            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-        }
-    }
-    return theRequest;
 }

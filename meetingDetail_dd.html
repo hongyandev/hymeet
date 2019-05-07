@@ -75,6 +75,8 @@
         </ul>
     </nav>
 </body>
+<script src="js/common.js?v=1"></script>
+<script type="text/javascript" src="js/detail.js?v=3" charset="UTF-8"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
@@ -94,7 +96,7 @@
                 $(".signinBtn").off('click').click(function () {
                     dd.biz.util.scan({
                         onSuccess: function(data) {
-                            alert(data.text);
+                            meetingSignin(data.text);
                         },
                         onFail : function(err) {
                         }
@@ -104,5 +106,4 @@
         })
     });
 </script>
-<script type="text/javascript" src="js/detail.js?v=2" charset="UTF-8"></script>
 </html>
