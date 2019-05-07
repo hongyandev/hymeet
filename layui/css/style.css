@@ -24,6 +24,7 @@ abbr,acronym {border:0;}
 /*general*/
 body{font-size:14px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#000;line-height:1.2;text-align:left;}
 a{color:#333;text-decoration:none;}
+a:hover{color:#333}
 .gray{color:#999;}
 .align-center{text-align: center}
 /*start*/
@@ -55,11 +56,12 @@ a{color:#333;text-decoration:none;}
     right:15px;
 }
 .redCircle{
-    width:8px;
-    height:8px;
+    width:10px;
+    height:10px;
     border-radius: 50%;
     background-color: #ff1a09;
     right:30px;
+    margin-top:-10px;
 }
 .yue{
     color:#0621ea;
@@ -136,4 +138,16 @@ nav.layui-container .layui-row li:first-child{
 }
 nav.layui-container .layui-row li a{
     display:block;
+}
+.hymc{
+    margin-bottom:10px;
+}
+.hyxq{
+    border-top:1px solid #e5e5e5;
+}
+.hyxq li{
+    padding:5px 20px;
+}
+.hyxq li a{
+    color:#0621ea;
 }
