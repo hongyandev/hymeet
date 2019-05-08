@@ -2,49 +2,23 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>会议参与人</title>
+    <link rel="stylesheet" href="layui/css/style.css" media="all">
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
+    <script src="js/common.js?v=1"></script>
+    <script src="js/meetingAttendee.js?v=1"></script>
 </head>
-<!--
-post https://wx.hongyancloud.com/api/meeting/attendee
-
-pageNumber:1
-pageSize:20
-hyid:190418000003
-
-{
-    "code": 200,
-    "data": {
-        "totalRow": 3,
-        "pageNumber": 1,
-        "firstPage": true,
-        "lastPage": true,
-        "totalPage": 1,
-        "pageSize": 20,
-        "list": [
-            {
-                "hzzt": "未查看",
-                "signin": "",
-                "ygbm": "11753",
-                "ygmc": "柴真颖"
-            },
-            {
-                "hzzt": "未回执",
-                "signin": "",
-                "ygbm": "01945",
-                "ygmc": "毛袁晨"
-            },
-            {
-                "hzzt": "未回执",
-                "signin": "",
-                "ygbm": "10889",
-                "ygmc": "郑毅"
-            }
-        ]
-    },
-    "message": "成功"
-}
--->
 <body>
-    <ul></ul>
+    <ul id="attendeeLists" class="attendeeLists">
+       <!-- <li>
+            <div class="clearfix">
+                <a class="fl" href="javascript:void(0)">张三</a>
+                <span class="fr">未签到</span>
+            </div>
+        </li>-->
+    </ul>
 </body>
 </html>
