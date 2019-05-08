@@ -133,11 +133,9 @@ nav.layui-container .layui-row li a{
 .hymc{
     margin-bottom:10px;
 }
-.hyxq{
-    border-top:1px solid rgba(25,31,37,0.12);
-}
 .hyxq li{
-    padding:5px 20px;
+    /*padding:5px 20px;*/
+    line-height: 1.5;
 }
 .hyxq li a, .dd_blue, .yue, .hui {
     color:#3296fa;
