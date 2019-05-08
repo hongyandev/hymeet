@@ -3,21 +3,23 @@ var ygbm = paramsObj.ygbm || "";
 var hyid = paramsObj.hyid || "";
 var signin;
 var openLink = function(url, params){
-    if (params) {
-        var paras = '';
-        Object.keys(params).forEach(function(key){
-            paras += paras === '' ? key + '=' + params[key] : '&' + key + '=' + params[key];
-        });
-        url += url.lastIndexOf('?') == -1 ? '?' + paras : '&' + paras;
-    }
-    if(dd) {
-        dd.biz.util.openLink({
-            url: url,//要打开链接的地址
-            onSuccess : function(result) {},
-            onFail : function(err) {}
-        })
-    } else {
-        alert("open link");
+    if (url) {
+        if (params) {
+            var paras = '';
+            Object.keys(params).forEach(function(key){
+                paras += paras === '' ? key + '=' + params[key] : '&' + key + '=' + params[key];
+            });
+            url += url.lastIndexOf('?') == -1 ? '?' + paras : '&' + paras;
+        }
+        if(dd) {
+            dd.biz.util.openLink({
+                url: url,//要打开链接的地址
+                onSuccess : function(result) {},
+                onFail : function(err) {}
+            })
+        } else {
+            alert("open link");
+        }
     }
 }
 var meetingSignin = function(token){
@@ -72,6 +74,7 @@ $(function () {
                     }
                     $(".mDetailInfo").html(res.data.hygy);
                     $(".mCyInfo").html(str);
+                    $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
                     if(res.data.state=='2'||res.data.state=='3'){
