@@ -2,6 +2,24 @@ var paramsObj=getRequestParams();
 var ygbm = paramsObj.ygbm || "";
 var hyid = paramsObj.hyid || "";
 var signin;
+var openLink = function(url, params){
+    if (params) {
+        var paras = '';
+        Object.keys(params).forEach(function(key){
+            paras += paras === '' ? key + '=' + params[key] : '&' + key + '=' + params[key];
+        });
+        url += url.lastIndexOf('?') == -1 ? '?' + paras : '&' + paras;
+    }
+    if(dd) {
+        dd.biz.util.openLink({
+            url: url,//要打开链接的地址
+            onSuccess : function(result) {},
+            onFail : function(err) {}
+        })
+    } else {
+        alert("open link");
+    }
+}
 var meetingSignin = function(token){
     $.ajax({
         type: "post",
@@ -14,7 +32,7 @@ var meetingSignin = function(token){
         success: function (res) {
             if(res.code == 200) {
                 layer.msg('签到成功');
-                $(".signinBtn").html('已签到').off('click');
+                $(".signinBtn").removeClass('dd_blue').addClass('gray').html('已签到').off('click');
             } else {
                 layer.alert(res.message, {icon: 2, btnAlign: 'c', closeBtn: 0});
             }
@@ -58,11 +76,15 @@ $(function () {
                     $(".hzzt").html(res.data.hzzt);
                     if(res.data.state=='2'||res.data.state=='3'){
                         $("#descInfo").show();
-                        $("#descInfo").val(res.data.remark)
+                        $("#descInfo").html(res.data.remark)
                     }
                     $(".hzBtn").on("click",function () {
                         layer.open({
+                            title: '回执内容',
                             type:1,
+                            btnAlign: 'c',
+                            area: '350px',
+                            shadeClose: true,
                             content: $("#hzCon"),
                             btn: ['参加', '不参加'],
                             yes: function(index){//参加2
@@ -86,7 +108,7 @@ $(function () {
                         document.location.href = "meetingMx.html"
                     });
                     if (signin) {
-                        $(".signinBtn").html('已签到').off('click');
+                        $(".signinBtn").removeClass('dd_blue').addClass('gray').html('已签到').off('click');
                     } else {
                         if(!dd) {
                             $(".signinBtn").click(function () {
