@@ -64,16 +64,16 @@ $(function () {
                     $(".mZj .zjr").html(res.data.zjr);
                     $(".address").html(res.data.hyaddr);
                     $(".hymc").html(res.data.hymc);
-                    var str='';
-                    for(var i=0;i<res.data.attendee.length;i++){
-                        if(res.data.attendee[i].hzzt=='0'||res.data.attendee[i].hzzt=='1'){
-                            str += '<a href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
-                        }else{
-                            str += '<a class="gray" href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
-                        }
-                    }
+                    // var str='';
+                    // for(var i=0;i<res.data.attendee.length;i++){
+                    //     if(res.data.attendee[i].hzzt=='0'||res.data.attendee[i].hzzt=='1'){
+                    //         str += '<a href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
+                    //     }else{
+                    //         str += '<a class="gray" href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
+                    //     }
+                    // }
+                    // $(".mCyInfo").html(str);
                     $(".mDetailInfo").html(res.data.hygy);
-                    $(".mCyInfo").html(str);
                     $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
