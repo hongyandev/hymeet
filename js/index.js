@@ -23,7 +23,7 @@ var loadFlow = function (ygbm) {
                                 "      <div class=\"messInfo\">\n" +
                                 "      <p>" + o.hytitle + "</p>\n" ;
                             if(o.state=="1"){ // 未回执
-                                str+="       <span class=\"messReply gray\">"+o.hzzt+"</span>\n";
+                                str+="       <span class=\"messReply\">"+o.hzzt+"</span>\n";
                             }else if(o.state=="0"){ // 未查看
                                 str+="       <span class=\"messReply redCircle\"></span>\n";
                             }else if(o.state=="2"){ // 参加

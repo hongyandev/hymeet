@@ -22,7 +22,7 @@ abbr,acronym {border:0;}
 .fl{float:left;}
 .fr{float:right;}
 /*general*/
-body{font-size:14px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#191f25;line-height:1.2;text-align:left;background-color: #f6f6f6}
+body{font-size:14px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#191f25;line-height:1.2;text-align:left;}
 a{color:rgba(25,31,37,0.72);text-decoration:none;}
 a:hover{color:rgba(25,31,37,0.72)}
 .gray{color:rgba(25,31,37,0.4);}
@@ -148,6 +148,7 @@ nav.layui-container .layui-row li a{
 /*参与人列表*/
 .attendeeLists li{
     padding:15px;
+    background-color: #fff;
     border-bottom:1px solid #e5e5e5;
 }
 .attendeeLists li a{
