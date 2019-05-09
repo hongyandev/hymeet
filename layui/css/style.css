@@ -22,7 +22,7 @@ abbr,acronym {border:0;}
 .fl{float:left;}
 .fr{float:right;}
 /*general*/
-body{font-size:14px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#191f25;line-height:1.2;text-align:left;}
+body{font-size:14px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#191f25;line-height:1.2;text-align:left;background-color: #f6f6f6}
 a{color:rgba(25,31,37,0.72);text-decoration:none;}
 a:hover{color:rgba(25,31,37,0.72)}
 .gray{color:rgba(25,31,37,0.4);}
@@ -30,12 +30,11 @@ a:hover{color:rgba(25,31,37,0.72)}
 .gray40{color:rgba(25,31,37,0.4);}
 .align-center{text-align: center}
 /*start*/
-.messLists{
-    padding: 0 0 15px 0;
-}
 .messLists li{
+    padding: 5px 0 0 0;
     width:100%;
     min-height:60px;
+    background-color: #fff;
 }
 .messInfo{
     position:relative;

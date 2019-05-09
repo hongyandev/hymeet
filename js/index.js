@@ -6,7 +6,6 @@ var loadFlow = function (ygbm) {
         var flow = layui.flow;
         flow.load({
             elem: '#messLists',
-            end: '暂无会议',
             done: function (page, next) { //到达临界点（默认滚动触发），触发下一页
                 var lis = [];
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
@@ -24,13 +23,13 @@ var loadFlow = function (ygbm) {
                                 "      <div class=\"messInfo\">\n" +
                                 "      <p>" + o.hytitle + "</p>\n" ;
                             if(o.state=="1"){ // 未回执
-                                str+="       <span class=\"messReply yue\">"+o.hzzt+"</span>\n";
+                                str+="       <span class=\"messReply gray\">"+o.hzzt+"</span>\n";
                             }else if(o.state=="0"){ // 未查看
                                 str+="       <span class=\"messReply redCircle\"></span>\n";
                             }else if(o.state=="2"){ // 参加
                                 str+="       <span class=\"messReply yue\">"+o.hzzt+"</span>\n";
                             }else if(o.state=="3"){ // 不参加
-                                str+="       <span class=\"messReply yue\">"+o.hzzt+"</span>\n";
+                                str+="       <span class=\"messReply dd_red\">"+o.hzzt+"</span>\n";
                             };
                             str+=" <time>" + o.kssj + "</time>" +
                                 "       </div>\n" +
