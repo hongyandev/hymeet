@@ -141,3 +141,19 @@ nav.layui-container .layui-row li a{
 .hyxq li a, .dd_blue, .yue, .hui {
     color:#3296fa;
 }
+
+/*参与人列表*/
+.attendeeLists li{
+    padding:15px;
+    border-bottom:1px solid #e5e5e5;
+}
+.attendeeLists li a{
+    color:#333;
+}
+.attendeeLists li em{
+    margin-left:10px;
+}
+.attendeeLists li span{
+    font-size:13px;
+    color:#3296fa;
+}
