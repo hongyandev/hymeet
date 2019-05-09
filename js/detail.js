@@ -86,7 +86,7 @@ $(function () {
                             title: '回执内容',
                             type:1,
                             btnAlign: 'c',
-                            area: '350px',
+                            area: '80%',
                             shadeClose: true,
                             content: $("#hzCon"),
                             btn: ['参加', '不参加'],
