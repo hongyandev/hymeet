@@ -61,7 +61,8 @@ $(function () {
                         layui.each(res.data.list, function (i, o) {
                             var str = "<li>\n" +
                                 "            <div class=\"clearfix\">\n" +
-                                "                <a class=\"fl\" href=\"javascript:void(0)\">"+o.ygmc+"</a>\n" +
+                                "                <a class=\"fl\" href=\"javascript:void(0)\">"+o.ygmc+"</a>" +
+                                "                <em class=\"fr\">"+o.hzzt+"</em>\n" +
                                 "                <span class=\"fr\">"+o.signin+"</span>\n" +
                                 "            </div>\n" +
                                 "        </li>";
@@ -69,10 +70,6 @@ $(function () {
                         });
                         next(lis.join(''), page < res.data.totalPage);
 
-                        $(document).on("touchend","#messLists li",function () {
-                            var hyid = $(this).attr("hyid");
-                            document.location.href = "meetingDetail"+(dd?"_dd":"")+".html?hyid="+hyid+"&ygbm="+ygbm
-                        })
                     }
                 })
             }
