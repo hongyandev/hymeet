@@ -33,7 +33,7 @@ var meetingSignin = function(token){
         },
         success: function (res) {
             if(res.code == 200) {
-                layer.msg('签到成功');
+                layer.msg('签到成功', {icon: 1});
                 $(".signinBtn").removeClass('dd_blue').addClass('gray').html('已签到').off('click');
             } else {
                 layer.alert(res.message, {icon: 2, btnAlign: 'c', closeBtn: 0});

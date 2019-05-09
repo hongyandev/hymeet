@@ -59,11 +59,18 @@ $(function () {
                     },
                     success: function (res) {
                         layui.each(res.data.list, function (i, o) {
+                            var fontCss = '';
+                            if (o.state == '0') {
+                                fontCss = 'gray';
+                            } else if (o.state == '2') {
+                                fontCss = 'dd_blue';
+                            } else if (o.state == '3') {
+                                fontCss = 'dd_red';
+                            }
                             var str = "<li>\n" +
                                 "            <div class=\"clearfix\">\n" +
-                                "                <a class=\"fl\" href=\"javascript:void(0)\">"+o.ygmc+"</a>" +
-                                "                <em class=\"fr\">"+o.hzzt+"</em>\n" +
-                                "                <span class=\"fr\">"+o.signin+"</span>\n" +
+                                "                <a class=\"fl\" href=\"javascript:void(0)\">"+o.ygmc+"<small class=\"gray\" style=\"margin: 0px 5px\">"+o.signin+"</small></a>" +
+                                "                <em class=\"fr " + fontCss +  "\">"+o.hzzt+"</em>\n" +
                                 "            </div>\n" +
                                 "        </li>";
                             lis.push(str);
