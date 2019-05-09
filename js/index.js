@@ -6,6 +6,7 @@ var loadFlow = function (ygbm) {
         var flow = layui.flow;
         flow.load({
             elem: '#messLists',
+            end: '暂无会议',
             done: function (page, next) { //到达临界点（默认滚动触发），触发下一页
                 var lis = [];
                 //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
