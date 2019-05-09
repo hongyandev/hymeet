@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>会议信息</title>
-    <link rel="stylesheet" href="layui/css/style.css?v=7" media="all">
     <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="layui/css/style.css?v=9" media="all">
     <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
@@ -46,6 +46,10 @@
             <p class="fl"><i class="layui-icon layui-icon-username"></i>    组织人</p>
             <span class="fr zjr">张三</span>
         </div>
+        <div class="mZj clearfix">
+            <p class="fl"><i class="layui-icon layui-icon-dialogue"></i>    联系人</p>
+            <span class="fr lxr">张三</span>
+        </div>
         <div class="mCy clearfix">
             <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-user"></i>    参与人</p>
             <span class="fr attendee">张三</span>
@@ -72,8 +76,8 @@
         </ul>
     </nav>
 </body>
-<script src="js/common.js?v=1"></script>
-<script type="text/javascript" src="js/detail.js?v=16" charset="UTF-8"></script>
+<script src="js/common.js?v=9"></script>
+<script type="text/javascript" src="js/detail.js?v=17" charset="UTF-8"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
@@ -84,7 +88,7 @@
                 nonceStr: _config.nonceStr,
                 signature: _config.signature,
                 jsApiList: ['runtime.info', 'device.notification.confirm', 'device.notification.alert',
-                    'device.notification.prompt', 'biz.util.openLink', 'biz.util.scan']
+                    'device.notification.prompt', 'biz.util.openLink', 'biz.util.open', 'biz.util.scan']
             });
             dd.error(function (err) {
                 alert('dd error: ' + JSON.stringify(err));

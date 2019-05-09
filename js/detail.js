@@ -61,18 +61,10 @@ $(function () {
                     $(".mDetailTop h1").html(res.data.hytitle);
                     $(".kssj").html("开始 " + res.data.kssj);
                     $(".jssj").html("结束 " + res.data.jssj);
-                    $(".mZj .zjr").html(res.data.zjr);
+                    $(".mZj .zjr").html(converUserLink(res.data.zjr_dd_id,res.data.zjr));
+                    $(".mZj .lxr").html(converUserLink(res.data.lxr_dd_id,res.data.lxr));
                     $(".address").html(res.data.hyaddr);
                     $(".hymc").html(res.data.hymc);
-                    // var str='';
-                    // for(var i=0;i<res.data.attendee.length;i++){
-                    //     if(res.data.attendee[i].hzzt=='0'||res.data.attendee[i].hzzt=='1'){
-                    //         str += '<a href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
-                    //     }else{
-                    //         str += '<a class="gray" href="javascript:void(0)">'+res.data.attendee[i].ygmc+'</a>'
-                    //     }
-                    // }
-                    // $(".mCyInfo").html(str);
                     $(".mDetailInfo").html(res.data.hygy);
                     $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);

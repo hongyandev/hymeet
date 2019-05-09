@@ -1,5 +1,4 @@
 var paramsObj = getRequestParams();
-var _userinfo = {};
 var ygbm = paramsObj.ygbm || "";
 var loadFlow = function (ygbm) {
     layui.use('flow', function(){
