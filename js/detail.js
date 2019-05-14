@@ -46,12 +46,12 @@ var meetingSignin = function(token){
 }
 $(function () {
     layui.use('layer', function() {
-        // var $ = layui.jquery;
         var layer = layui.layer;
         $.ajax({
             type: "post",
             url: "https://wx.hongyancloud.com/api/meeting/info",
             data: {
+                appKey: 'ding7mtvnn9qm85dbwfm',
                 hyid: hyid,
                 ygbm: ygbm
             },
