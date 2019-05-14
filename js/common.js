@@ -1,5 +1,5 @@
 var _config;
-var _userinfo = {};
+var _userinfo = $.cookie('userinfo');
 var getRequestParams = function () {
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -22,7 +22,7 @@ var converUserLink = function (uid, username) {
 }
 
 var openUserinfo = function (uid) {
-    if (dd) {
+    dd.ready(function () {
         dd.biz.util.open({
             name: 'profile',
             params: {
@@ -32,5 +32,5 @@ var openUserinfo = function (uid) {
             onSuccess : function() {},
             onFail : function(err) {}
         });
-    }
+    });
 }

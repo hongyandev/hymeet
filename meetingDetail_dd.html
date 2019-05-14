@@ -11,6 +11,7 @@
     <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js" charset="UTF-8"></script>
 </head>
 <body>
     <div class="mDetail">
@@ -76,8 +77,8 @@
         </ul>
     </nav>
 </body>
-<script src="js/common.js?v=9"></script>
-<script type="text/javascript" src="js/detail.js?v=17" charset="UTF-8"></script>
+<script src="js/common.js?v=10"></script>
+<script type="text/javascript" src="js/detail.js?v=18" charset="UTF-8"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
@@ -93,9 +94,9 @@
             dd.error(function (err) {
                 alert('dd error: ' + JSON.stringify(err));
             });
-            dd.ready(function () {
-                if(!signin) {
-                    $(".signinBtn").click(function () {
+            if(!signin) {
+                $(".signinBtn").click(function () {
+                    dd.ready(function () {
                         dd.biz.util.scan({
                             onSuccess: function(data) {
                                 meetingSignin(data.text);
@@ -103,9 +104,9 @@
                             onFail : function(err) {
                             }
                         });
-                    });
-                }
-            });
+                    })
+                });
+            }
         })
     });
 </script>

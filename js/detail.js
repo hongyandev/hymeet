@@ -1,5 +1,5 @@
 var paramsObj=getRequestParams();
-var ygbm = paramsObj.ygbm || "";
+var ygbm = _userinfo.jobnumber || paramsObj.ygbm || "";
 var hyid = paramsObj.hyid || "";
 var signin;
 var openLink = function(url, params){
@@ -12,10 +12,12 @@ var openLink = function(url, params){
             url += url.lastIndexOf('?') == -1 ? '?' + paras : '&' + paras;
         }
         if(dd) {
-            dd.biz.util.openLink({
-                url: url,//要打开链接的地址
-                onSuccess : function(result) {},
-                onFail : function(err) {}
+            dd.ready(function () {
+                dd.biz.util.openLink({
+                    url: url,//要打开链接的地址
+                    onSuccess : function(result) {},
+                    onFail : function(err) {}
+                })
             })
         } else {
             alert("open link");
@@ -47,6 +49,7 @@ var meetingSignin = function(token){
 $(function () {
     layui.use('layer', function() {
         var layer = layui.layer;
+        var shade = layer.load(3,{shade:[0.12,'#191f25']});
         $.ajax({
             type: "post",
             url: "https://wx.hongyancloud.com/api/meeting/info",
@@ -56,6 +59,7 @@ $(function () {
                 ygbm: ygbm
             },
             success: function (res) {
+                layer.close(shade);
                 if(res.code=='200'){
                     signin = res.data.signin;
                     $(".mDetailTop h1").html(res.data.hytitle);
@@ -66,7 +70,7 @@ $(function () {
                     $(".address").html(res.data.hyaddr);
                     $(".hymc").html(res.data.hymc);
                     $(".mDetailInfo").html(res.data.hygy);
-                    $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
+                    $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '&ygbm=' + ygbm + '&dd_chatid=' + res.data.dd_chatid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
                     if(res.data.state=='2'||res.data.state=='3'){
@@ -112,6 +116,10 @@ $(function () {
                         }
                     }
                 }
+            },
+            error: function (request, error) {
+                layer.close(shade);
+                layer.alert(error, {icon: 2, btnAlign: 'c', closeBtn: 0});
             }
         });
     })

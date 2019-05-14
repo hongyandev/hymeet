@@ -14,7 +14,7 @@ var loadFlow = function (ygbm) {
                     url: "https://wx.hongyancloud.com/api/meeting/list",
                     data: {
                         pageNumber: page,
-                        pageSize: 6,
+                        pageSize: 20,
                         ygbm: ygbm
                     },
                     success: function (res) {

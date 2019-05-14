@@ -6,13 +6,40 @@
     <title>会议参与人</title>
     <link rel="stylesheet" href="layui/css/layui.css"  media="all">
     <link rel="stylesheet" href="layui/css/style.css?v=2" media="all">
+    <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
-    <script src="js/common.js?v=1"></script>
-    <script src="js/meetingAttendee.js?v=4"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js" charset="UTF-8"></script>
 </head>
 <body style="background-color: #f6f6f6">
-    <ul id="attendeeLists" class="attendeeLists">
-    </ul>
+<ul id="attendeeLists" class="attendeeLists">
+</ul>
 </body>
+<script src="js/common.js?v=2"></script>
+<script src="js/meetingAttendee.js?v=7"></script>
+<script>
+    $(document).ready(function () {
+        $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config", function () {
+            dd.config({
+                agentId: _config.agentId,
+                corpId: _config.corpId,
+                timeStamp: _config.timeStamp,
+                nonceStr: _config.nonceStr,
+                signature: _config.signature,
+                jsApiList: ['runtime.info', 'device.notification.confirm', 'device.notification.alert',
+                    'device.notification.prompt', 'biz.chat.toConversation']
+            });
+            dd.error(function (err) {
+                alert('dd error: ' + JSON.stringify(err));
+            });
+            dd.ready(function () {
+                $('body').append('<nav class="layui-container">\n' +
+                    '        <ul class="layui-row">\n' +
+                    '            <li class="layui-col-xs12 align-center layui-col-sm12 layui-col-md12" style="border: 0"><a class="dd_blue" href="javascript:openChat(\''+dd_chatid+'\')">讨论组</a></li>\n' +
+                    '        </ul>\n' +
+                    '    </nav>');
+            })
+        });
+    });
+</script>
 </html>

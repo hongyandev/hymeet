@@ -38,11 +38,52 @@
     "message": "成功"
 }
 */
+var paramsObj=getRequestParams();
+var hyid = paramsObj.hyid || '';
+var ygbm = _userinfo.jobnumber || paramsObj.ygbm || '';
+var dd_chatid = paramsObj.dd_chatid || '';
+var layer;
+var openChat = function (chatid) {
+    chatid = chatid=='' ? dd_chatid : chatid;
+    if (!chatid) {
+        var shade = layer.load(3,{shade:[0.12,'#191f25']});
+        $.ajax({
+            type: 'post',
+            url: 'https://wx.hongyancloud.com/api/meeting/chat',
+            data: {
+                appKey: 'ding7mtvnn9qm85dbwfm',
+                hyid: hyid,
+                ygbm: ygbm
+            },
+            success: function (res) {
+                layer.close(shade);
+                if(res.code == 200) {
+                    dd_chatid = res.data.chatid;
+                    openChat(dd_chatid);
+                } else {
+                    layer.alert(res.message, {icon: 2, btnAlign: 'c', closeBtn: 0});
+                }
+            },
+            error: function (request, error) {
+                layer.close(shade);
+                layer.alert(error, {icon: 2, btnAlign: 'c', closeBtn: 0});
+            }
+        })
+    } else {
+        dd.ready(function () {
+            dd.biz.chat.toConversation({
+                corpId: _config.corpId,
+                chatId: chatid,//会话Id
+                onSuccess : function() {},
+                onFail : function() {}
+            })
+        })
+    }
+}
 $(function () {
-    var paramsObj = getRequestParams();
-    var hyid = paramsObj.hyid;
-    layui.use('flow', function(){
+    layui.use(['flow','layer'], function(){
         // var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        layer = layui.layer;
         var flow = layui.flow;
         flow.load({
             elem: '#attendeeLists',
@@ -54,7 +95,7 @@ $(function () {
                     url: "https://wx.hongyancloud.com/api/meeting/attendee",
                     data: {
                         pageNumber: page,
-                        pageSize: 6,
+                        pageSize: 20,
                         hyid: hyid
                     },
                     success: function (res) {
@@ -76,7 +117,6 @@ $(function () {
                             lis.push(str);
                         });
                         next(lis.join(''), page < res.data.totalPage);
-
                     }
                 })
             }
