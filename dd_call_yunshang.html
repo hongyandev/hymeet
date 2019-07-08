@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Call HongYanYunShang</title>
+    <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
+    <script src="js/index.umd.min.js"></script>
+</head>
+<body>
+<!--https://github.com/suanmei/callapp-lib-->
+</body>
+<script>
+    fetch('https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/config?appkey=ding7mtvnn9qm85dbwfm', {
+        method: 'POST',
+        cache: 'no-cache'
+    })
+        .then(res => res.json())
+        .then(json => {
+            dd.ready(function () {
+                dd.runtime.permission.requestAuthCode({
+                    corpId: json.data.corpId,
+                    onSuccess: function (info) {
+                        fetch('https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/userinfo?code=' + info.code + '&corpid=' + json.data.corpId,{
+                            method: 'GET',
+                            cache: 'no-cache'
+                        })
+                            .then(res => res.json())
+                            .then(json => {
+                                alert(JSON.stringify(json.data))
+                            })
+                            .catch(function (error) {
+                                console.log('Get userinfo Error: ', error.message);
+                            });
+                    },
+                    onFail: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+            });
+        })
+        .catch(function (error) {
+            console.log('Init config Error: ', error.message);
+        })
+</script>
+</html>
