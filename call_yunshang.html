@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>鸿雁云商</title>
+    <script src="js/index.umd.min.js"></script>
+    <style>
+        body {
+            background-image: url("images/launchfile.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #FFF;
+        }
+    </style>
+</head>
+<body>
+<!--https://github.com/suanmei/callapp-lib-->
+<a href="hongyar://com.erp.hongyar/open?type=1">点击唤起</a>
+</body>
+<script>
+    const option = {
+        scheme: {
+            protocol: 'hongyar',
+            host: 'com.erp.hongyar'
+        },
+        intent: {
+            package: 'com.erp.hongyar',
+            scheme: 'hongyar',
+        },
+        universal: {
+            host: 'wx.hongyancloud.com',
+            pathKey: 'action',
+        },
+        appstore: 'https://itunes.apple.com/cn/app/hong-yan-yun-shang/id1126254541',
+        yingyongbao: 'http://sge.cn:9106/appdownload',
+        fallback: 'http://sge.cn:9106/appdownload',
+        timeout: 5000
+    };
+    const lib = new CallApp(option);
+    lib.open({
+        path: 'open',
+        param: {
+            userid : '01945'
+        }
+    });
+    </script>
+</html>

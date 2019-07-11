@@ -3,14 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Call HongYanYunShang</title>
+    <title>鸿雁云商</title>
     <script type="text/javascript" src="//g.alicdn.com/dingding/dingtalk-jsapi/2.6.0/dingtalk.open.js"></script>
     <script src="js/index.umd.min.js"></script>
+    <style>
+        body {
+            background-image: url("images/launchfile.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #FFF;
+        }
+    </style>
 </head>
 <body>
 <!--https://github.com/suanmei/callapp-lib-->
 </body>
 <script>
+    const option = {
+        scheme: {
+            protocol: 'hongyar',
+            host: 'com.erp.hongyar'
+        },
+        intent: {
+            package: 'com.erp.hongyar',
+            scheme: 'hongyar',
+        },
+        universal: {
+            host: 'wx.hongyancloud.com',
+            pathKey: 'action',
+        },
+        appstore: 'https://itunes.apple.com/cn/app/hong-yan-yun-shang/id1126254541',
+        yingyongbao: 'http://sge.cn:9106/appdownload',
+        fallback: 'http://sge.cn:9106/appdownload',
+        timeout: 5000
+    };
+    const lib = new CallApp(option);
     fetch('https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/config?appkey=ding7mtvnn9qm85dbwfm', {
         method: 'POST',
         cache: 'no-cache'
@@ -28,6 +57,12 @@
                             .then(res => res.json())
                             .then(json => {
                                 alert(JSON.stringify(json.data))
+                                lib.open({
+                                    path: 'open',
+                                    param: {
+                                        userid : json.data.userid
+                                    }
+                                });
                             })
                             .catch(function (error) {
                                 console.log('Get userinfo Error: ', error.message);
