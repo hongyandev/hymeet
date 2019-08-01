@@ -1,5 +1,5 @@
 var paramsObj=getRequestParams();
-var ygbm = _userinfo.jobnumber || paramsObj.ygbm || "";
+var ygbm = _userinfo ? _userinfo.jobnumber : (paramsObj.ygbm || "");
 var hyid = paramsObj.hyid || "";
 var signin;
 var openLink = function(url, params){

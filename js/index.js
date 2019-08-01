@@ -40,7 +40,11 @@ var loadFlow = function (ygbm) {
 
                         $(document).on("touchend","#messLists li",function () {
                             var hyid = $(this).attr("hyid");
-                            document.location.href = "meetingDetail"+(dd?"_dd":"")+".html?hyid="+hyid+"&ygbm="+ygbm
+                            if (dd){
+                                document.location.href = "meetingDetail_dd.html?hyid="+hyid+"&ygbm="+ygbm
+                            } else {
+                                document.location.href = "meetingDetail.html?hyid="+hyid+"&ygbm="+ygbm
+                            }
                         })
                     }
                 })
