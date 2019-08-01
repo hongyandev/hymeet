@@ -19,43 +19,54 @@
     <div class="mDetail">
         <div class="mDetailTop">
             <h1></h1>
-            <time class="mDetailTime kssj"></time>
-            <br/>
-            <time class="mDetailTime jssj"></time>
-            <br/>
-            <span>会议类型</span>
+            <p class="hymc gray56">会议类型</p>
         </div>
         <div class="mDetailInfo">
             <p></p>
         </div>
-
+        <div class="mZj clearfix">
+            <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-log"></i>    时间</p>
+            <span class="fr kssj gray56"></span>
+        </div>
+        <div class="clearfix" style="padding: 0 15px 15px 15px">
+            <span class="fr jssj gray56"></span>
+        </div>
         <div class="mZj clearfix">
             <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-location"></i>    地点</p>
             <span class="fr address"></span>
         </div>
-        <div class="mZj clearfix" style="border-top:10px solid #e5e5e5">
+        <div class="mZj bold_line">
+            <p><i style="font-weight:bold" class="layui-icon layui-icon-file"></i>    会议资料</p>
+            <div class="mInfo">
+                <ul class="hyxq">
+                    <li><a href="javascript:openLink('http://sge.cn:9080/WebReport/ReportServer?reportlet=%5B9500%5D%5B552e%5D%2F%5B533a%5D%5B57df%5D%5B67e5%5D%5B8be2%5D%2F%5B8ba2%5D%5B5355%5D%2Fs_xsddzt_cycx_qy.cpt', {dd_orientation: 'auto'})">测试报表</a></li>
+                    <li><a href="javascript:void(0)">dsfsd</a></li>
+                    <li><a href="javascript:void(0)">fdgd</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mZj clearfix bold_line">
             <p class="fl"><i class="layui-icon layui-icon-username"></i>    组织人</p>
             <span class="fr zjr">张三</span>
         </div>
-        <div class="mCy">
-            <p><i style="font-weight:bold" class="layui-icon layui-icon-user"></i>    参与人</p>
-            <div class="mCyInfo">
+        <div class="mZj clearfix">
+            <p class="fl"><i class="layui-icon layui-icon-dialogue"></i>    联系人</p>
+            <span class="fr lxr">张三</span>
+        </div>
+        <div class="mCy clearfix">
+            <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-user"></i>    参与人</p>
+            <span class="fr attendee">张三</span>
+        </div>
+        <div class="receiptInfo bold_line">
+            <div class="clearfix">
+                <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-release"></i>    回执</p>
+                <span class="fr hzzt"></span>
             </div>
-        </div>
-        <div class="receiptInfo clearfix" style="border-top:10px solid #e5e5e5">
-            <p class="fl">回执状态</p>
-            <span class="fr hzzt"></span>
-        </div>
-        <div class="receiptInfo clearfix">
-            <p class="fl hz">回执内容</p>
-        </div>
-        <div class="receiptInfo">
-            <textarea style="display: none" id="descInfo" class="layui-textarea" readonly></textarea>
+            <div class="mInfo gray" id="descInfo" style="display: none;"></div>
         </div>
         <div id="hzCon" style="display: none">
             <div class="layui-form-item layui-form-text">
-                <label class="">回执内容</label>
-                <div class="">
+                <div>
                     <textarea id="desc" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
                 </div>
             </div>
@@ -63,8 +74,8 @@
     </div>
     <nav class="layui-container">
         <ul class="layui-row">
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="hzBtn" href="javascript:void(0)">回执</a></li>
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="detailBtn" href="javascript:void(0)">详情</a></li>
+            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="hzBtn dd_blue" href="javascript:void(0)">回执</a></li>
+            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="signinBtn dd_blue" href="javascript:void(0)">签到</a></li>
         </ul>
     </nav>
 </body>
