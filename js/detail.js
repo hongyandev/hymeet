@@ -73,6 +73,7 @@ var loadData = function (hyid, ygbm) {
                     $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '&ygbm=' + ygbm + '&dd_chatid=' + res.data.dd_chatid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
+                    $(".hyzt").html(res.data.hyzt=='5'?'<span class="dd_red">已结束</span>':'');
                     var hyzl = "";
                     if(res.data.hyzl && res.data.hyzl.length > 0){
                         $.each(res.data.hyzl, function (index, item) {
