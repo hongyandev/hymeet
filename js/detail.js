@@ -46,7 +46,7 @@ var meetingSignin = function(token){
         }
     })
 }
-$(function () {
+var loadData = function (hyid, ygbm) {
     layui.use('layer', function() {
         var layer = layui.layer;
         var shade = layer.load(3,{shade:[0.12,'#191f25']});
@@ -124,8 +124,8 @@ $(function () {
             }
         });
     })
-});
-function hz(state) {
+}
+var hz = function (state) {
     var hzid = $(".hzBtn").attr('hzid');
     var message = $("#desc").val();
     $.ajax({
@@ -149,3 +149,9 @@ function hz(state) {
         }
     })
 }
+$(function () {
+    if(hyid && ygbm) {
+        loadData(hyid, ygbm);
+    }
+});
+

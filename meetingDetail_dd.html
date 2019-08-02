@@ -75,7 +75,7 @@
     </nav>
 </body>
 <script src="js/common.js?v=10"></script>
-<script type="text/javascript" src="js/detail.js?v=18" charset="UTF-8"></script>
+<script type="text/javascript" src="js/detail.js?v=3" charset="UTF-8"></script>
 <script>
     $(document).ready(function () {
         $.getScript("https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/config?need_sign=true", function () {
@@ -90,6 +90,32 @@
             dd.error(function (err) {
                 alert('dd error: ' + JSON.stringify(err));
             });
+            if (!ygbm) {
+                dd.ready(function () {
+                    dd.runtime.permission.requestAuthCode({
+                        corpId: _config.corpId,
+                        onSuccess: function (info) {
+                            $.ajax({
+                                url: 'https://wx.hongyancloud.com/isvapi/dingtalk/jsapi/ding7mtvnn9qm85dbwfm/userinfo?code=' + info.code + '&corpid=' + _config.corpId,
+                                type: 'GET',
+                                async: false,
+                                success: function (res) {
+                                    $.cookie('userinfo', res.data);
+                                    _userinfo = res.data;
+                                    ygbm = res.data.jobnumber;
+                                    loadData(hyid,ygbm);
+                                },
+                                error: function () {
+                                    alert("userinfo: " + _config.corpId);
+                                }
+                            });
+                        },
+                        onFail: function (err) {
+                            alert('requestAuthCode: ' + JSON.stringify(err));
+                        }
+                    });
+                });
+            }
             if(!signin) {
                 $(".signinBtn").click(function () {
                     dd.ready(function () {
