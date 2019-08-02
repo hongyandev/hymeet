@@ -20,7 +20,7 @@ var openLink = function(url, params){
                 })
             })
         } else {
-            alert("open link");
+            location.href=url;
         }
     }
 }
@@ -73,6 +73,13 @@ $(function () {
                     $(".attendee").html('<a href="meetingAttendee.html?hyid=' + hyid + '&ygbm=' + ygbm + '&dd_chatid=' + res.data.dd_chatid + '">' + res.data.attendee_count + ' 人<span class="gray40" style="margin: 0px 10px">回执 ' + res.data.attendee_reply + ' 人，签到 ' + res.data.attendee_signin + ' 人</span><i style="font-weight:bold" class="layui-icon layui-icon-right"></i></a>')
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
+                    var hyzl = "";
+                    if(res.data.hzzl && res.data.hzzl.length > 0){
+                        $.each(res.data.hzzl, function (index, item) {
+                            hyzl += "<li><a href=\"javascript:openLink('"+item.url+"', {dd_orientation: 'auto'})\">item.hyname</a></li>"
+                        });
+                        $(".hyxq").html(hyzl);
+                    }
                     if(res.data.state=='2'||res.data.state=='3'){
                         $("#descInfo").show();
                         $("#descInfo").html(res.data.remark)
