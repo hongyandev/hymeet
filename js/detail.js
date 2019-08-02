@@ -74,9 +74,9 @@ $(function () {
                     $(".hzBtn").attr("hzid",res.data.hzid);
                     $(".hzzt").html(res.data.hzzt);
                     var hyzl = "";
-                    if(res.data.hzzl && res.data.hzzl.length > 0){
-                        $.each(res.data.hzzl, function (index, item) {
-                            hyzl += "<li><a href=\"javascript:openLink('"+item.url+"', {dd_orientation: 'auto'})\">item.hyname</a></li>"
+                    if(res.data.hyzl && res.data.hyzl.length > 0){
+                        $.each(res.data.hyzl, function (index, item) {
+                            hyzl += "<li><a href=\"javascript:openLink('"+item.url+"', {dd_orientation: 'auto'})\">"+item.hyname+"</a></li>"
                         });
                         $(".hyxq").html(hyzl);
                     }
@@ -115,12 +115,6 @@ $(function () {
                     });
                     if (signin) {
                         $(".signinBtn").removeClass('dd_blue').addClass('gray').html('已签到').off('click');
-                    } else {
-                        if(!dd) {
-                            $(".signinBtn").click(function () {
-                                alert("call camera");
-                            })
-                        }
                     }
                 }
             },

@@ -40,7 +40,7 @@
 */
 var paramsObj=getRequestParams();
 var hyid = paramsObj.hyid || '';
-var ygbm = _userinfo.jobnumber || paramsObj.ygbm || '';
+var ygbm = _userinfo ? _userinfo.jobnumber : (paramsObj.ygbm || "");
 var dd_chatid = paramsObj.dd_chatid || '';
 var layer;
 var openChat = function (chatid) {

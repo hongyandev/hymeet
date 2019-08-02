@@ -11,6 +11,7 @@
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery.cookie.js" charset="UTF-8"></script>
+    <!--<script src="js/jquery.bridge.js"></script>-->
     <script>var dd;</script>
     <script src="js/common.js?v=1"></script>
     <script type="text/javascript" src="js/detail.js?v=2" charset="UTF-8"></script>
@@ -44,15 +45,15 @@
         </div>
         <div class="mZj clearfix bold_line">
             <p class="fl"><i class="layui-icon layui-icon-username"></i>    组织人</p>
-            <span class="fr zjr">张三</span>
+            <span class="fr zjr"></span>
         </div>
         <div class="mZj clearfix">
             <p class="fl"><i class="layui-icon layui-icon-dialogue"></i>    联系人</p>
-            <span class="fr lxr">张三</span>
+            <span class="fr lxr"></span>
         </div>
         <div class="mCy clearfix">
             <p class="fl"><i style="font-weight:bold" class="layui-icon layui-icon-user"></i>    参与人</p>
-            <span class="fr attendee">张三</span>
+            <span class="fr attendee"></span>
         </div>
         <div class="receiptInfo bold_line">
             <div class="clearfix">
@@ -69,11 +70,28 @@
             </div>
         </div>
     </div>
-    <nav class="layui-container">
+    <nav class="layui-container" style="padding:0">
         <ul class="layui-row">
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="hzBtn dd_blue" href="javascript:void(0)">回执</a></li>
-            <li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="signinBtn dd_blue" href="javascript:void(0)">签到</a></li>
+            <li class="align-center" style="border-right:none"><a class="hzBtn dd_blue" href="javascript:void(0)">回执</a></li>
+            <!--<li class="layui-col-xs6 align-center layui-col-sm6 layui-col-md4"><a class="signinBtn dd_blue" href="javascript:void(0)">签到</a></li>-->
         </ul>
     </nav>
 </body>
+<script>
+/*    $(document).ready(function () {
+        if(!signin) {
+            $.fn.bridge(function (bridge) {
+                bridge.registerHandler('scanCallback', function (data, callback) {
+                    meetingSignin(data.text);
+                });
+            });
+            $(".signinBtn").click(function () {
+                alert("call camera");
+                $.fn.bridge(function (bridge) {
+                    bridge.callHandler('scan', null, function(response) {})
+                })
+            })
+        }
+    });*/
+</script>
 </html>
