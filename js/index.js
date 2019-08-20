@@ -38,7 +38,7 @@ var loadFlow = function (ygbm) {
                         });
                         next(lis.join(''), page < res.data.totalPage);
 
-                        $(document).on("click","#messLists li",function () {
+                        $(document).on("click touchstart","#messLists li",function () {
                             var hyid = $(this).attr("hyid");
                             if (dd){
                                 document.location.href = "meetingDetail_dd.html?hyid="+hyid+"&ygbm="+ygbm
