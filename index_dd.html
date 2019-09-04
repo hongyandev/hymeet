@@ -42,7 +42,7 @@
                                 $.cookie('userinfo', res.data);
                                 _userinfo = res.data;
                                 ygbm = res.data.jobnumber;
-                                loadFlow(ygbm);
+                                doAjax('up');
                             },
                             error: function () {
                                 alert("userinfo: " + _config.corpId);
