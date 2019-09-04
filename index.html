@@ -3,20 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>会议管理</title>
-    <link rel="stylesheet" href="layui/css/style.css" media="all">
     <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="layui/css/minirefresh.min.css"  media="all">
+    <link rel="stylesheet" href="layui/css/style.css" media="all">
     <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/jquery.cookie.js" charset="UTF-8"></script>
     <script>var dd;</script>
     <script src="js/common.js?v=1"></script>
-    <script src="js/index.js?v=1"></script>
+
+
 </head>
-<body>
-    <div>
-        <ul id="messLists" class="messLists">
-        </ul>
+<body style="background-color: #f6f6f6">
+<div class="content">
+    <div id="minirefresh"  class="minirefresh-wrap">
+        <div class="minirefresh-scroll">
+            <ul id="messLists" class="data-list messLists">
+            </ul>
+        </div>
     </div>
+</div>
+
 </body>
+<script src="js/minirefresh.js"></script>
+<script src="js/index.js?v=1"></script>
 </html>
